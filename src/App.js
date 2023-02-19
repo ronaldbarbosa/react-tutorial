@@ -1,24 +1,24 @@
 import './App.css';
-import HelloWorld from './components/HelloWorld';
-import Pessoa from './components/Pessoa'
-import Lista from './components/Lista';
-import Evento from './components/Evento';
-import Form from './components/Form';
-import Condicional from './components/Condicional';
-import OutraLista from './components/OutraLista';
-import { useState } from 'react';
-import SeuNome from './components/SeuNome';
-import Saudacao from './components/Saudacao.js';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Sobre from './pages/Sobre';
+import Contato from './pages/Contato';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 
 function App() {
-  const [nome, setNome] = useState()
-
   return (
-    <div className="App">
-      <h1>State Lift</h1>
-      <SeuNome setNome={ setNome }/>
-      <Saudacao nome={ nome }/>
-    </div>
+    <Router>
+      <Navbar />
+
+      <Routes>
+        <Route exact path="/" element={ <Home /> } />
+        <Route path="/sobre" element={ <Sobre /> } />
+        <Route path="/contato" element={ <Contato /> } />
+      </Routes>
+
+      <Footer />
+    </Router>
   );
 }
 
